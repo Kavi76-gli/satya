@@ -18,11 +18,11 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1942453136397127');
+fbq('init', '1485019269137331');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1942453136397127&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=1485019269137331&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 <style>
@@ -437,7 +437,6 @@ body{
 }
 </style>
 </head>
-
 <body>
 
 <div class="bg-glow1"></div>
@@ -510,7 +509,6 @@ community insights, and instant Telegram alerts.
 Join Telegram Channel
 </button>
 
-
 <!-- FEATURES -->
 
 <div class="features">
@@ -555,6 +553,7 @@ community and become part of the growing network.
 <button class="vip-btn" id="vipBtn">
 Request Access Now
 </button>
+
 </div>
 
 <!-- FOOTER -->
@@ -563,88 +562,61 @@ Request Access Now
 © 2026 VIP Community. All Rights Reserved.
 </div>
 
-<!-- ✅ Premium Right Popup -->
-<!-- ✅ Premium Right Popup -->
-<div id="adPopup" class="popup">
-    <img src="ka.jpg" class="popup-logo">
+<!-- POPUP -->
 
-    <div class="popup-text">
-        <span class="popup-badge">✔ Verified Ads Partner</span>
-        Ads setup managed by 
-        <a href="https://t.me/+hwUyreNlEtZjMmY1" target="_blank">
-            Kavi Ads Agency
-        </a>
-    </div>
+<div id="adPopup" class="popup">
+
+<img src="ka.jpg" class="popup-logo">
+
+<div class="popup-text">
+
+<span class="popup-badge">✔ Verified Ads Partner</span>
+
+Ads setup managed by 
+
+<a href="https://t.me/+hwUyreNlEtZjMmY1" target="_blank">
+Kavi Ads Agency
+</a>
+
+</div>
+
 </div>
 
 </div>
 
 <script>
-
 const TELEGRAM_LINK = "https://t.me/+rVRLif2ghnMyZmI1";
 
-const popup = document.getElementById("adPopup");
+window.__pixelLocks = window.__pixelLocks || {
+  subscribe: false
+};
+
+function fireSubscribeOnce(){
+  if(window.__pixelLocks.subscribe) return;
+  window.__pixelLocks.subscribe = true;
+
+  if(typeof fbq === "function"){
+    fbq('track', 'Subscribe', {
+      value: 1,
+      currency: 'INR'
+    });
+  }
+
+  setTimeout(() => {
+    window.location.href = TELEGRAM_LINK;
+  }, 250);
+}
 
 const joinBtn = document.getElementById("joinBtn");
-const vipBtn = document.getElementById("vipBtn");
+const vipBtn  = document.getElementById("vipBtn");
 
-/* PREVENT DOUBLE EVENT FIRE */
-let leadFired = false;
-
-/* JOIN FUNCTION */
-function handleJoinClick(e){
-
-    // stop default button behavior
-    e.preventDefault();
-
-    // fire event only once
-    if(!leadFired){
-
-        leadFired = true;
-
-        fbq('track', 'Lead');
-
-    }
-
-    // redirect after small delay
-    setTimeout(function(){
-
-        window.location.href = TELEGRAM_LINK;
-
-    },300);
-
+function handleClick(e){
+  e.preventDefault();
+  fireSubscribeOnce();
 }
 
-/* BUTTON EVENTS */
-if(joinBtn){
-    joinBtn.addEventListener("click", handleJoinClick);
-}
-
-if(vipBtn){
-    vipBtn.addEventListener("click", handleJoinClick);
-}
-
-/* POPUP FUNCTION */
-function showPopup(){
-
-    if(!popup) return;
-
-    popup.classList.add("show");
-
-    setTimeout(function(){
-
-        popup.classList.remove("show");
-
-    },4000);
-
-}
-
-/* SHOW POPUP */
-setTimeout(showPopup, 2000);
-
-setInterval(showPopup, 12000);
-
+if(joinBtn) joinBtn.addEventListener("click", handleClick);
+if(vipBtn) vipBtn.addEventListener("click", handleClick);
 </script>
-
 </body>
 </html>

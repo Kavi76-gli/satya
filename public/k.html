@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+<title>VIP Trading Community</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1485019269137331');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1485019269137331&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#f5f7fb;
+  color:#111;
+  overflow-x:hidden;
+}
+
+/* Background Glow */
+
+.bg-glow1{
+  position:fixed;
+  top:-120px;
+  right:-120px;
+  width:280px;
+  height:280px;
+  background:#00c3ff;
+  opacity:.12;
+  filter:blur(100px);
+  border-radius:50%;
+  z-index:-1;
+}
+
+.bg-glow2{
+  position:fixed;
+  bottom:-120px;
+  left:-120px;
+  width:260px;
+  height:260px;
+  background:#00ff9d;
+  opacity:.12;
+  filter:blur(100px);
+  border-radius:50%;
+  z-index:-1;
+}
+
+.container{
+  width:100%;
+  max-width:480px;
+  margin:auto;
+  padding:18px;
+}
+
+/* TOP BAR */
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo img{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+  object-fit:cover;
+  box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.logo h2{
+  font-size:17px;
+  font-weight:700;
+  color:#111;
+}
+
+.live-badge{
+  background:#e9fff5;
+  color:#00a86b;
+  padding:7px 12px;
+  border-radius:50px;
+  font-size:12px;
+  font-weight:600;
+}
+
+/* HERO */
+
+.hero{
+  margin-top:30px;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:33px;
+  line-height:1.25;
+  font-weight:800;
+  color:#111;
+}
+
+.gradient{
+  background:linear-gradient(135deg,#00c3ff,#00d26a);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  margin-top:14px;
+  font-size:14px;
+  color:#666;
+  line-height:1.7;
+}
+
+/* MAIN IMAGE */
+
+.main-image{
+  margin-top:25px;
+  position:relative;
+}
+
+.main-image img{
+  width:100%;
+  border-radius:24px;
+  display:block;
+  box-shadow:0 15px 40px rgba(0,0,0,.12);
+}
+
+/* STATS */
+
+.stats{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.stat{
+  background:#fff;
+  padding:14px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 8px 25px rgba(0,0,0,.05);
+}
+
+.stat h3{
+  font-size:18px;
+  color:#111;
+}
+
+.stat p{
+  font-size:12px;
+  color:#777;
+  margin-top:3px;
+}
+
+/* BUTTON */
+
+.join-btn{
+  width:100%;
+  border:none;
+  margin-top:25px;
+  padding:17px;
+  border-radius:60px;
+  background:linear-gradient(135deg,#00c3ff,#00d26a);
+  color:#fff;
+  font-size:16px;
+  font-weight:700;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  box-shadow:0 12px 30px rgba(0,195,255,.35);
+  cursor:pointer;
+  transition:.3s;
+}
+
+.join-btn:hover{
+  transform:translateY(-3px);
+}
+
+.join-btn img{
+  width:22px;
+}
+
+/* FEATURES */
+
+.features{
+  margin-top:28px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.feature{
+  background:#fff;
+  border-radius:18px;
+  padding:16px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  box-shadow:0 8px 25px rgba(0,0,0,.05);
+}
+
+.icon{
+  width:45px;
+  height:45px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#00c3ff,#00d26a);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+  font-size:18px;
+  font-weight:700;
+}
+
+.feature-text h4{
+  font-size:15px;
+  color:#111;
+}
+
+.feature-text p{
+  font-size:12px;
+  color:#777;
+  margin-top:3px;
+}
+
+/* VIP CARD */
+
+.vip-card{
+  margin-top:30px;
+  background:linear-gradient(135deg,#111827,#1f2937);
+  border-radius:28px;
+  padding:24px;
+  color:#fff;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.vip-card::before{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  background:rgba(255,255,255,.08);
+  border-radius:50%;
+  top:-100px;
+  right:-80px;
+}
+
+.vip-card h2{
+  font-size:25px;
+  font-weight:800;
+}
+
+.vip-card p{
+  margin-top:10px;
+  font-size:14px;
+  color:#cfd3dc;
+  line-height:1.7;
+}
+
+.vip-btn{
+  margin-top:20px;
+  width:100%;
+  border:none;
+  padding:16px;
+  border-radius:60px;
+  background:#fff;
+  color:#111;
+  font-weight:700;
+  font-size:15px;
+  cursor:pointer;
+}
+
+/* FOOTER */
+
+.footer{
+  margin-top:25px;
+  text-align:center;
+  color:#777;
+  font-size:12px;
+  padding-bottom:30px;
+}
+/* PREMIUM POPUP */
+
+.popup{
+    position:fixed;
+    right:15px;
+    bottom:20px;
+    width:320px;
+    padding:14px;
+    border-radius:22px;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    display:flex;
+    align-items:center;
+    gap:14px;
+    box-shadow:
+    0 10px 35px rgba(0,0,0,0.10),
+    0 0 0 1px rgba(255,255,255,0.6);
+    z-index:9999;
+    animation:popupSlide 1s ease;
+    overflow:hidden;
+}
+
+/* Glow Effect */
+
+.popup::before{
+    content:'';
+    position:absolute;
+    width:180px;
+    height:180px;
+    background:linear-gradient(135deg,#00c3ff33,#00ff9d33);
+    border-radius:50%;
+    top:-90px;
+    right:-90px;
+}
+
+/* LOGO */
+
+.popup-logo{
+    width:58px;
+    height:58px;
+    border-radius:18px;
+    object-fit:cover;
+    position:relative;
+    z-index:2;
+    box-shadow:0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* TEXT */
+
+.popup-text{
+    flex:1;
+    font-size:13px;
+    line-height:1.6;
+    color:#374151;
+    position:relative;
+    z-index:2;
+    font-weight:500;
+}
+
+/* VERIFIED BADGE */
+
+.popup-badge{
+    display:inline-block;
+    margin-bottom:6px;
+    padding:6px 12px;
+    border-radius:50px;
+    background:linear-gradient(135deg,#00c3ff,#00d26a);
+    color:#fff;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.3px;
+}
+
+/* LINK */
+
+.popup-text a{
+    color:#111827;
+    font-weight:700;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.popup-text a:hover{
+    color:#00a86b;
+}
+
+/* ENTRY ANIMATION */
+
+@keyframes popupSlide{
+
+    from{
+        transform:translateX(120%);
+        opacity:0;
+    }
+
+    to{
+        transform:translateX(0);
+        opacity:1;
+    }
+
+}
+
+/* MOBILE */
+
+@media(max-width:480px){
+
+    .popup{
+        width:calc(100% - 24px);
+        right:12px;
+        bottom:14px;
+        padding:12px;
+    }
+
+    .popup-logo{
+        width:52px;
+        height:52px;
+    }
+
+    .popup-text{
+        font-size:12px;
+    }
+
+}
+</style>
+</head>
+<body>
+
+<div class="bg-glow1"></div>
+<div class="bg-glow2"></div>
+
+<div class="container">
+
+<!-- TOP -->
+
+<div class="topbar">
+
+<div class="logo">
+<img src="k.png">
+<h2>91 Club VIP</h2>
+</div>
+
+<div class="live-badge">
+🟢 LIVE
+</div>
+
+</div>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<h1>
+Join The <span class="gradient">VIP Trading</span><br>
+Community 🚀
+</h1>
+
+<p>
+Get daily market updates, educational trading discussions,
+community insights, and instant Telegram alerts.
+</p>
+
+</div>
+
+<!-- IMAGE -->
+
+<div class="main-image">
+<img src="h.png">
+</div>
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat">
+<h3>3000+</h3>
+<p>Members</p>
+</div>
+
+<div class="stat">
+<h3>24/7</h3>
+<p>Updates</p>
+</div>
+
+<div class="stat">
+<h3>Free</h3>
+<p>Access</p>
+</div>
+
+</div>
+
+<!-- BUTTON -->
+
+<button class="join-btn" id="joinBtn">
+<img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png">
+Join Telegram Channel
+</button>
+
+<!-- FEATURES -->
+
+<div class="features">
+
+<div class="feature">
+<div class="icon">✓</div>
+<div class="feature-text">
+<h4>Beginner Friendly</h4>
+<p>Easy to understand trading discussions & updates.</p>
+</div>
+</div>
+
+<div class="feature">
+<div class="icon">⚡</div>
+<div class="feature-text">
+<h4>Instant Alerts</h4>
+<p>Receive quick updates directly on Telegram.</p>
+</div>
+</div>
+
+<div class="feature">
+<div class="icon">📈</div>
+<div class="feature-text">
+<h4>Daily Market Insights</h4>
+<p>Stay updated with trending market movements.</p>
+</div>
+</div>
+
+</div>
+
+<!-- VIP CARD -->
+
+<div class="vip-card">
+
+<h2>Free VIP Access</h2>
+
+<p>
+Limited access available today. Join our Telegram
+community and become part of the growing network.
+</p>
+
+<button class="vip-btn" id="vipBtn">
+Request Access Now
+</button>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+© 2026 VIP Community. All Rights Reserved.
+</div>
+
+<!-- POPUP -->
+
+<div id="adPopup" class="popup">
+
+<img src="ka.jpg" class="popup-logo">
+
+<div class="popup-text">
+
+<span class="popup-badge">✔ Verified Ads Partner</span>
+
+Ads setup managed by 
+
+<a href="https://t.me/+hwUyreNlEtZjMmY1" target="_blank">
+Kavi Ads Agency
+</a>
+
+</div>
+
+
+
+</div>
+
+<script>
+const TELEGRAM_LINK = "https://t.me/+rVRLif2ghnMyZmI1";
+
+/* GLOBAL LOCK */
+window.__leadLocked = false;
+
+/* ELEMENTS */
+const joinBtn = document.getElementById("joinBtn");
+const vipBtn  = document.getElementById("vipBtn");
+
+/* SAFE LEAD FUNCTION */
+function fireLead(e){
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    /* BLOCK DOUBLE FIRE */
+    if(window.__leadLocked){
+        return false;
+    }
+
+    window.__leadLocked = true;
+
+    /* DISABLE BUTTONS */
+    if(joinBtn){
+        joinBtn.style.pointerEvents = "none";
+    }
+
+    if(vipBtn){
+        vipBtn.style.pointerEvents = "none";
+    }
+
+    /* FIRE LEAD ONLY ONCE */
+    if(typeof fbq === "function"){
+
+        fbq('trackSingle', '1485019269137331', 'Lead');
+
+    }
+
+    /* REDIRECT */
+    setTimeout(function(){
+
+        window.location.href = TELEGRAM_LINK;
+
+    }, 300);
+
+    return false;
+}
+
+/* REMOVE OLD EVENTS */
+if(joinBtn){
+    joinBtn.onclick = fireLead;
+}
+
+if(vipBtn){
+    vipBtn.onclick = fireLead;
+}
+</script>
+</body>
+</html>

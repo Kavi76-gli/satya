@@ -587,36 +587,60 @@ Kavi Ads Agency
 <script>
 const TELEGRAM_LINK = "https://t.me/+rVRLif2ghnMyZmI1";
 
-window.__pixelLocks = window.__pixelLocks || {
-  subscribe: false
-};
+/* GLOBAL LOCK */
+window.__leadLocked = false;
 
-function fireSubscribeOnce(){
-  if(window.__pixelLocks.subscribe) return;
-  window.__pixelLocks.subscribe = true;
-
-  if(typeof fbq === "function"){
-    fbq('track', 'Subscribe', {
-      value: 1,
-      currency: 'INR'
-    });
-  }
-
-  setTimeout(() => {
-    window.location.href = TELEGRAM_LINK;
-  }, 250);
-}
-
+/* ELEMENTS */
 const joinBtn = document.getElementById("joinBtn");
 const vipBtn  = document.getElementById("vipBtn");
 
-function handleClick(e){
-  e.preventDefault();
-  fireSubscribeOnce();
+/* SAFE LEAD FUNCTION */
+function fireLead(e){
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    /* BLOCK DOUBLE FIRE */
+    if(window.__leadLocked){
+        return false;
+    }
+
+    window.__leadLocked = true;
+
+    /* DISABLE BUTTONS */
+    if(joinBtn){
+        joinBtn.style.pointerEvents = "none";
+    }
+
+    if(vipBtn){
+        vipBtn.style.pointerEvents = "none";
+    }
+
+    /* FIRE LEAD ONLY ONCE */
+    if(typeof fbq === "function"){
+
+        fbq('trackSingle', '1485019269137331', 'Lead');
+
+    }
+
+    /* REDIRECT */
+    setTimeout(function(){
+
+        window.location.href = TELEGRAM_LINK;
+
+    }, 300);
+
+    return false;
 }
 
-if(joinBtn) joinBtn.addEventListener("click", handleClick);
-if(vipBtn) vipBtn.addEventListener("click", handleClick);
+/* REMOVE OLD EVENTS */
+if(joinBtn){
+    joinBtn.onclick = fireLead;
+}
+
+if(vipBtn){
+    vipBtn.onclick = fireLead;
+}
 </script>
 </body>
 </html>
